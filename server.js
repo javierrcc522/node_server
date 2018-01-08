@@ -4,23 +4,29 @@ const hbs = require('hbs');
 var app = express();
 
 hbs.registerPartials(__dirname + '/views/partial');
+hbs.registerHelper('getCurrentYear',() => {
+  return new Date().getFullYear();
+});
+
+hbs.registerHelper('screamIt', (text)=>{
+  return text.toUpperCase();
+});
 
 app.set('view engine', 'hbs');
 
 app.use(express.static(__dirname + '/public'));
 
+
 app.get('/',(req, res) => {
   res.render('home.hbs', {
     pageTitle: 'Home page',
     welcomeMessage: 'Welcome to my page',
-    currentYear: new Date().getFullYear()
   });
 });
 
 app.get('/about',(req, res) => {
   res.render('about.hbs',{
     pageTitle: 'About page',
-    currentYear: new Date().getFullYear()
   });
 });
 
