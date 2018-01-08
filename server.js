@@ -13,5 +13,11 @@ app.get('/about',(req, res) => {
   res.send('About page');
 });
 
+app.gety('/bad',(req, res) => {
+  res.send({
+    errorMessage: 'Unable to handle request'
+  });
+});
+
 
 app.listen(3001);
