@@ -7,9 +7,10 @@ app.set('view engine', 'hbs');
 app.use(express.static(__dirname + '/public'));
 
 app.get('/',(req, res) => {
-  res.send({
-    name: 'Javier',
-    likes: ['Tacos', 'Pizza!']
+  res.render('home.hbs', {
+    pageTitle: 'Home page',
+    welcomeMessage: 'Welcome to my page',
+    currentYear: new Date().getFullYear()
   });
 });
 
