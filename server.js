@@ -16,7 +16,7 @@ hbs.registerHelper('screamIt', (text)=>{
 app.set('view engine', 'hbs');
 // using middle ware
 
-app.use(express.static(__dirname + '/public'));
+
 app.use((req, res, next)=>{
   var now = new Date().toString();
   var log = `${now}: ${req.method} ${req.url}`;
@@ -30,6 +30,11 @@ app.use((req, res, next)=>{
  next();
 });
 // when logging data \n moves to the next line
+//bottom line cuts all the pages and only renders maintance
+// app.use((req, res, next)=>{
+//   res.render('maintance.hbs');
+// });
+app.use(express.static(__dirname + '/public'));
 
 
 app.get('/',(req, res) => {
